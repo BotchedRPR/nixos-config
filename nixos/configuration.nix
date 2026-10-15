@@ -47,6 +47,9 @@
     powerOnBoot = false;
   };
 
+  # For blueman manager
+  services.blueman.enable = true;
+
   # Hardware - TouchPad
   services.libinput.enable = true;
 
@@ -59,7 +62,6 @@
   services.greetd.settings.default_session.user = "greeter";
 
   # Programs - TODO, commented out ones should be moved to user
-  xdg.portal.enable = true;
   programs.firefox.enable = true;
   #programs.k3b.enable = true;
   #programs.kdeconnect.enable = true;
@@ -107,6 +109,20 @@
     };
   };
 
+  # Shell
+  # Disable bash
+  programs.bash.enable = false;
+
+  # Enable zsh
+  programs.zsh.enable = true;
+
+  # Set zsh as default
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = [ pkgs.zsh ];
+
+  # Fix CNF
+  programs.command-not-found.enable = false;
+
   # Moved from /etc/nixos/config.nix
     environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -114,7 +130,6 @@
     bintools
     dnsmasq
     spice-gtk
-    git
     tree
     python3
     qbittorrent
