@@ -28,6 +28,8 @@ let mod = "Mod4"; in {
 
     gh
     android-studio
+
+    gimp
   ];
 
   home.sessionVariables = {
